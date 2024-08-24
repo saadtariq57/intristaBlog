@@ -34,15 +34,18 @@ function DropdownMenu({ name, email, userImageId }) {
 
 
   const logoutAccount = async () => {
-    await authService.logout().then(() => {
-      dispatch(logout());
-      dispatch(unsetProfile());
-    });
-    if (location.pathname == '/home') {
-      window.location.reload()
-    }
-    else {
-      navigate('/home');
+    let confirmed = confirm('Are you sure you want to logout?');
+    if(confirmed){
+      await authService.logout().then(() => {
+        dispatch(logout());
+        dispatch(unsetProfile());
+      });
+      if (location.pathname == '/home') {
+        window.location.reload()
+      }
+      else {
+        navigate('/home');
+      }
     }
   };
 
