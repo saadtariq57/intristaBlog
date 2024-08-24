@@ -1,0 +1,22 @@
+@keyframes levitate {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(50%,);
+        opacity: 1;
+    }
+}
+
+.levitate {
+    animation: levitate 1s ease-out;
+}
+
+.post-card {
+    transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+}
+
+.post-card:hover {
+    transform: scale(1.05); /* Zoom effect */
+}
