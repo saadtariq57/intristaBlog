@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Input, Button } from '../../components'
 import { authService } from '../../appwrite/auth'
 
 function EnterEmail() {
+    const { pathname } = useLocation();
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
     const { register, handleSubmit, reset } = useForm()
 
     const [error, setError] = useState("")

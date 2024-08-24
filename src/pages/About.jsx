@@ -1,6 +1,13 @@
 import React from 'react'
-
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 function About() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
   return (
     <div className='min-h-[90vh] pt-5 md:pt-10 pb-2 px-6 md:px-28'>
       <h1 className='text-3xl font-semibold mb-3'>About Us</h1>

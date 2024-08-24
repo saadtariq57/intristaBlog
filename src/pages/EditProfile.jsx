@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import { Input } from '../components'
 import Button from '../components/Button'
 import { useForm } from 'react-hook-form'
@@ -12,6 +13,12 @@ import { setProfile as setProfileInStore } from '../store/profileSlice'
 
 
 function EditProfile() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [error, setError] = useState(false)

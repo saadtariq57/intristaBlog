@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import { PostCard } from '../components'
 import { useSelector } from 'react-redux'
 import { dbService } from '../appwrite/dbController';
@@ -7,6 +8,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { userProfileService } from '../appwrite/userProfile';
 
 function Profile() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
     const navigate = useNavigate()
     const userData = useSelector(state => state.auth.userData)
     const profileData = useSelector(state => state.profile.profileData)

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { authService } from '../appwrite/auth';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -7,6 +9,12 @@ import { userProfileService } from '../appwrite/userProfile';
 import { setProfile } from '../store/profileSlice';
 
 function EmailVerification() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [verifying, setVerifying] = useState(true)
