@@ -23,7 +23,6 @@ function EnterNewPassword() {
 
         const newPasswordSet = await authService.updateRecovery(userId, secret, data.password)
         if(newPasswordSet){
-            console.log("Password changed successfully: ", newPasswordSet);
             navigate('/login', { replace: true })
         }
     }

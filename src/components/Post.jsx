@@ -54,11 +54,8 @@ function Post() {
         if (confirmed) {
 
             const imgId = post.imageId
-            console.log("imageId: ", imgId);
-
             const response = await dbService.deletePost(postId, imgId)
             if (response) {
-                console.log("Post deleted successfully");
                 navigate('/home')
             }
         }

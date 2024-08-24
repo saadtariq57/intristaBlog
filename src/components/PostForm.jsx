@@ -40,10 +40,7 @@ function PostForm({ post }) {
 
   const navigate = useNavigate()
   const userData = useSelector(state => state.auth.userData)
-  // console.log("userData: ", userData);
-
   const profileData = useSelector(state => state.profile.profileData)
-  // console.log("profileData: ", profileData);
 
   const submitPost = async (data) => {
     data.status = data.status === "Active"; //Converting <Select/> (string) to boolean
@@ -75,15 +72,12 @@ function PostForm({ post }) {
       else {
         if (!data.image || !data.image[0]) {
           console.error("Image is required to create a post.");
-          console.log("data.image: ", data.image);
-
           return; // Stop the function if no image is uploaded
         }
         const file = data.image && await dbService.uploadImage(data.image[0])
 
         const dbPost = await dbService.createPost(data.title, data.description, data.status, file ? file.$id : undefined, userData.$id, profileData.$id)
         if (dbPost) {
-          console.log("Post created successfully.");
           navigate(`/user/${profileData.$id}/post/${dbPost.$id}`, { replace: true })
         }
       }

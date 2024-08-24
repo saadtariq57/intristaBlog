@@ -18,8 +18,6 @@ function EmailVerification() {
     authService.updateVerification(userId, secret)
         .then(() => {
             setTimeout(async() => {
-                console.log("User verified!");
-
                 const userData = await authService.getCurrentUser()
 
                 //Creating User Profile
@@ -37,7 +35,6 @@ function EmailVerification() {
         })
         .catch((error) => {
             setVerifying(false)
-            console.log("Verification failed: ", error);
         })
 
     return verifying ? (

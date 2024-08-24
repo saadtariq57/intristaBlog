@@ -33,8 +33,6 @@ function SignUp() {
             //Creating new account
             const userData = await authService.createAccount(data)
             if (userData) {
-                console.log("Account created!", userData);
-
                 //Logging in
                 await authService.login({email: data.email, password: data.password})
                 

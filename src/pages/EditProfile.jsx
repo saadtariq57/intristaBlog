@@ -31,7 +31,6 @@ function EditProfile() {
             })
         }
     }, [profileId])
-    console.log("profile: ", profile);
 
     useEffect(() => {
         if (profile) {
