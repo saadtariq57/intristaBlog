@@ -40,7 +40,7 @@ function DropdownMenu({ name, email, userImageId }) {
         dispatch(logout());
         dispatch(unsetProfile());
       });
-      if (location.pathname == '/home') {
+      if (location.pathname == '/home') { 
         window.location.reload()
       }
       else {
