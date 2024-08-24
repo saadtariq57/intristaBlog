@@ -11,7 +11,7 @@ import EditBtn from '../assets/EditBtn';
 function PostForm({ post }) {
   const { register, handleSubmit, reset } = useForm()
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState("")
 
   useEffect(() => {
     if (post) {
@@ -46,7 +46,7 @@ function PostForm({ post }) {
     data.status = data.status === "Active"; //Converting <Select/> (string) to boolean
 
     try {
-      setError(true)
+      setError("")
       setIsSubmitting(true)
 
       //Edit post
@@ -82,7 +82,7 @@ function PostForm({ post }) {
         }
       }
     } catch (error) {
-      setError(true)
+      setError(error.message)
     } finally {
       setIsSubmitting(false)
     }

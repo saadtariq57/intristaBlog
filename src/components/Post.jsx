@@ -64,7 +64,7 @@ function Post() {
     return (profile && post) ? (
         <div className='min-h-[95vh] pt-16 lg:pt-10 mb-10'>
 
-            <div className='flex flex-col lg:flex-row w-5/6 md:w-2/3 min-h-[65vh] max-h-[80vh] m-auto rounded-3xl overflow-hidden shadow-xl'>
+            <div className='flex flex-col lg:flex-row w-5/6 md:w-2/3 min-h-[65vh] max-h-[100vh] m-auto rounded-3xl overflow-hidden shadow-xl'>
                 <img src={dbService.previewImage(post.imageId)} alt="image" className='lg:w-1/2 object-cover max-h-[85vh] ' />
 
                 <div className='w-full overflow-hidden'>

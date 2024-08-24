@@ -32,7 +32,7 @@ class DbService{
             )
         } catch (error) {
             console.log("Appwrite service :: createPost :: error ", error);
-            return false
+            throw error
         }
     }
 
@@ -51,7 +51,7 @@ class DbService{
             )
         } catch (error) {
             console.log("Appwrite service :: updatePost :: error ", error);
-            return false
+            throw error
         }
     }
 
