@@ -23,6 +23,16 @@ class AuthService{
         }
     }
 
+    async deleteAccount({email, password, fullName, username}) {
+        try {
+            const user = await this.account
+            return user;
+        } catch (error) {
+            console.log("Appwrite service :: createAccount :: error ", error);
+            throw error
+        }
+    }
+
     async verifyEmail(){
         try { 
             return await this.account.createVerification(`${conf.appUrl}/verification`)
@@ -92,6 +102,7 @@ class AuthService{
             console.log("Appwrite service :: getCurrentUser :: error ", error);
             throw error
         }
+        // return null
     }
 
     //Password Recovery

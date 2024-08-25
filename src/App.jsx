@@ -4,6 +4,8 @@ import { Outlet } from "react-router-dom"
 import { authService } from "./appwrite/auth"
 import { useDispatch } from "react-redux"
 import { login, logout } from "./store/authSlice"
+import { userProfileService } from "./appwrite/userProfile"
+import { setProfile, unsetProfile } from "./store/profileSlice"
 
 function App() {
   const dispatch = useDispatch()
@@ -11,15 +13,21 @@ function App() {
 
   useEffect(() => {
     authService.getCurrentUser().then(userData => {
-      if(userData){
-        dispatch(login(userData))
+      if(userData.emailVerification){
+        userProfileService.getUserProfile(userData.prefs.profileId).then(userProfile => {
+          dispatch(login(userData)) 
+          dispatch(setProfile(userProfile))
+        })
+        
       }
       else{
         dispatch(logout())
+        dispatch(unsetProfile())
       }
     })
     .finally(() => setLoading(false))
   }, [])
+
   if(loading){
     <div className="text-2xl">Loading...</div>
   }

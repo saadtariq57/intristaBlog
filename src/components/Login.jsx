@@ -19,19 +19,30 @@ function Login() {
 
     const loginAccount = async(data) => {
         try {
+            const currentUser = await authService.getCurrentUser()
+            if(currentUser){
+                await authService.logout()
+            }
             setIsSubmitting(true)
             setError("")
             const loginSession = await authService.login(data)
             if(loginSession){
                 const userData = await authService.getCurrentUser()
                 if(userData){
-                    const profileId = userData.prefs.profileId                    
-                    const profileData = await userProfileService.getUserProfile(profileId)      
-
-                    dispatch(authLogin(userData))
-                    dispatch(setProfile(profileData))
-
-                    navigate('/home', { replace: true })
+                    const EmailVerification = userData.emailVerification
+                    if(EmailVerification){
+                        const profileId = userData.prefs.profileId                    
+                        const profileData = await userProfileService.getUserProfile(profileId)      
+                        
+                        dispatch(authLogin(userData))
+                        dispatch(setProfile(profileData))
+                        
+                        navigate('/home', { replace: true })
+                    } else {
+                        await authService.logout()
+                        setError("Email not verified!");
+                        setSendVerification(true)
+                    }
                 }
             }
   

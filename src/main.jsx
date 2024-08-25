@@ -4,7 +4,8 @@ import App from './App.jsx'
 import './index.css'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
-import { persistor, store } from './store/store.js'
+// import { persistor, store } from './store/store.js'
+import { store } from './store/store.js'
 import { PersistGate } from 'redux-persist/integration/react'
 import Protected from './components/Protected.jsx'
 import {About, AddPost, EditPost, EditProfile, EmailVerification, EnterEmail, EnterNewPassword, Home, LandingPage, Login, Post, Profile, SignUp} from './pages'
@@ -93,11 +94,11 @@ const router = createBrowserRouter(
 
 
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
+  <StrictMode>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
           <RouterProvider router={router} />
-        </PersistGate>
+        {/* </PersistGate> */}
       </Provider>
-  // </StrictMode>
+  </StrictMode>
 )

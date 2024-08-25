@@ -3,6 +3,7 @@ import PostCard from './PostCard'
 import { dbService } from '../../appwrite/dbController'
 
 function Home() {
+
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
