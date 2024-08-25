@@ -19,10 +19,10 @@ function Login() {
 
     const loginAccount = async(data) => {
         try {
-            const currentUser = await authService.getCurrentUser()
-            if(currentUser){
-                await authService.logout()
-            }
+            // const currentUser = await authService.getCurrentUser()
+            // if(currentUser){
+            //     await authService.logout()
+            // }
             setIsSubmitting(true)
             setError("")
             const loginSession = await authService.login(data)
